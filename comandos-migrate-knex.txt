@@ -1,0 +1,8 @@
+criar uma migrate
+npm run knex -- migrate:make nome-da-migrate
+
+executar a migrate
+npm run knex -- migrate:latest
+
+desfazer a ultima migrate
+npm run knex -- migrate:rollback
