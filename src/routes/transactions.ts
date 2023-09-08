@@ -5,6 +5,12 @@ import { FastifyInstance } from "fastify"
 import { checkSessionIdExists } from '../middlewares/check-session-id-exists'
 
 export async function transactionsRoutes(app: FastifyInstance) {
+    // está no contexto global dessa rota
+    // exemplo de hook que vai ativar quando realizar em todas as rotas dentro desse contexto
+    app.addHook('preHandler', async (request, response) => {
+        console.log(`[${request.method}] ${request.url}`)
+    })
+
     app.get('/', {
         preHandler: [checkSessionIdExists]
     }, async (request, response) => {
